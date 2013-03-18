@@ -22,12 +22,17 @@ public class PrimesTest {
         assertEquals(3, actual);
     }
 
+    public void hundrethPrimeIs541() {
+        int actual = primes.getPrime(2);
+        assertEquals(3, actual);
+    }
+
     public void sumOfFirst100Primes() {
         int sum = 0;
         for (int i = 1; i <= 100; i++) {
             sum += primes.getPrime(i);
         }
         
-        assertEquals(24333, sum);
+        assertEquals(24133, sum);
     }
 }
