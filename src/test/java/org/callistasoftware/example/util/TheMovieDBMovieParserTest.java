@@ -9,6 +9,9 @@ import org.mockito.Mockito;
 
 public class TheMovieDBMovieParserTest {
 
+    // Example json node
+    // {"adult":false,"backdrop_path":"/gM3KKiN80qbJgKHjPnmAfwxSicG.jpg","id":603,"original_title":"The Matrix","release_date":"1999-03-30","poster_path":"/gynBNzwyaHKtXqlEKKLioNkjKgN.jpg","popularity":9.620000000000001,"title":"The Matrix","vote_average":9.0,"vote_count":328}
+
     @Test
     public void test() {
         JsonNode node = Mockito.mock(JsonNode.class);
