@@ -1,13 +1,9 @@
 package org.callistasoftware.example.web.controller;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.callistasoftware.example.model.MovieInfo;
-import org.callistasoftware.example.util.JSONHelper;
 import org.callistasoftware.example.util.MovieFetcher;
-import org.codehaus.jackson.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,17 +20,7 @@ public class ApiController {
     
     @RequestMapping(value = "/search/{title}", method = RequestMethod.GET)
     @ResponseBody
-    public List<MovieInfo> search(@PathVariable(value="title") String title) {
-        ArrayList<MovieInfo> result = new ArrayList<MovieInfo>();
-        try {
-            JsonNode node = JSONHelper.parseJson(movieFetcher.getMovieJSON(title));
-            Iterator<JsonNode> iterator = node.get("results").iterator();
-            while (iterator.hasNext()) {
-                result.add(MovieInfo.parse(iterator.next()));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
+    public List<MovieInfo> search(@PathVariable(value="title") String title) throws Exception {
+        return movieFetcher.getMovies(title);
     }
 }

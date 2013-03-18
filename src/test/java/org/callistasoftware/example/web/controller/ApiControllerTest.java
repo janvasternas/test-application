@@ -1,14 +1,13 @@
 package org.callistasoftware.example.web.controller;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
-import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import org.callistasoftware.example.model.MovieInfo;
 import org.callistasoftware.example.util.MovieFetcher;
-import org.codehaus.jackson.JsonParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -25,11 +24,11 @@ public class ApiControllerTest {
     private final ApiController controller = new ApiController();
     
     @Test
-    public void test() throws JsonParseException, IOException {
-        when(fetcher.getMovieJSON("the title")).thenReturn("{\"results\": [{\"title\" : \"The Title\", \"poster_path\" : \"/path.jpg\"}]}");
-        List<MovieInfo> search = controller.search("the title");
-        assertEquals(1, search.size());
-        assertEquals("The Title", search.get(0).getTitle());
+    public void test() throws Exception {
+        List<MovieInfo> list = Collections.singletonList(new MovieInfo("The Title"));
+        when(fetcher.getMovies("the title")).thenReturn(list);
+        List<MovieInfo> found = controller.search("the title");
+        assertEquals(list, found);
     }
 
 }

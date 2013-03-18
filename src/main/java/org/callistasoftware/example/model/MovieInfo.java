@@ -1,7 +1,5 @@
 package org.callistasoftware.example.model;
 
-import org.codehaus.jackson.JsonNode;
-
 public class MovieInfo {
 
     private final String title;
@@ -11,10 +9,8 @@ public class MovieInfo {
         this.title = title;
         this.poster = poster;
     }
-    public static MovieInfo parse(JsonNode data) {
-        String title = getFieldValue(data, "title");
-        String poster = getFieldValue(data, "poster_path");
-        return new MovieInfo(title, poster);
+    public MovieInfo(String title) {
+        this(title, null);
     }
 
     public String getTitle() {
@@ -25,7 +21,4 @@ public class MovieInfo {
         return poster;
     }
 
-    private static String getFieldValue(JsonNode data, String name) {
-        return data.get(name).getValueAsText();
-    }
 }

@@ -9,7 +9,11 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean class="org.callistasoftware.example.util.MovieFetcher">
-        <property name="key" value="somekey" />
+    <bean class="org.callistasoftware.example.util.StaticMovieFetcher" />
+
+    <!-- 
+    <bean class="org.callistasoftware.example.util.TheMovieDBMovieFetcher">
+        <property name="key" value="thekey" />
     </bean>
+     -->
 </beans>
